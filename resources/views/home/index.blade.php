@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container mt-2">
     <div class="row">
         @foreach ($item as $i)
         <div class="col-3 d-flex justify-content-center mb-3 mt-2">

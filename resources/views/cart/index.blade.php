@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="album py-1 bg-light">
+<div class="album py-1 bg-light mt-2">
     <div class="container">
         <div class="row">
             <?php $totalPrice = 0; ?>

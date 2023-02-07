@@ -35,9 +35,8 @@ Route::group(['middleware' => ['auth','checkrole:admin,user']], function(){
     Route::post('/checkout', [CartController::class, 'checkOut']);
     Route::get('/profile', [ProfileController::class, 'profile']);
     Route::post('/save', [ProfileController::class, 'save']);
-    Route::get('/maintenance', [ProfileController::class, 'maintenance']);
 });
 
 Route::group(['middleware' => ['auth','checkrole:admin']], function(){
-
+    Route::get('/maintenance', [ProfileController::class, 'maintenance']);
 });
