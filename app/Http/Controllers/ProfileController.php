@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -68,5 +69,21 @@ class ProfileController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    public function profile(){
+        return view('profile.profile');
+    }
+
+    public function save() {
+
+
+        return view('profile.saved');
+    }
+
+    public function maintenance() {
+        return view('profile.maintenance', [
+            'user' => User::latest()
+        ]);
     }
 }
