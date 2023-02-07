@@ -19,11 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/register', [ProfileController::class, 'register']);
+Route::post('/postregister', [ProfileController::class, 'postregister']);
 Route::get('/login', [ProfileController::class, 'login']);
 Route::post('/postlogin', [ProfileController::class, 'postlogin']);
 Route::get('/logout', [ProfileController::class, 'logout']);
 
-Route::get('/register', [ProfileController::class, 'register']);
-Route::post('/postregister', [ProfileController::class, 'postregister']);
-
-Route::get('/home', [HomeController::class, 'home']);
+Route::group(['middleware' => ['auth','checkrole:admin,user']], function(){
+    Route::get('/home', [HomeController::class, 'home']);
+    Route::get('/home/{id}', [HomeController::class, 'detailproduct']);
+});

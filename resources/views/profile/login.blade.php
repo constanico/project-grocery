@@ -27,19 +27,35 @@
 </section>
 
 <div class="container w-100 d-flex justify-content-center">
-    <form action="/" method="POST">
+    <form action="/postlogin" method="POST">
+        @csrf
         <div class="d-flex flex-row">
             <div class="left me-3">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <input type="password" class="form-control @error('email') is-invalid @enderror" id="password" name="password">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
                 </div>
             </div>
         </div>
+
+        @if (session()->has('error'))
+            <p class="text-danger">{{ session('error') }}</p>
+        @endif
+
         <div class="d-block text-center">
             <button type="submit" class="w-50 btn btn-warning">Submit</button>
         </div>

@@ -16,7 +16,7 @@
     <div class="container text-center">
         <div class="row align-items-start">
             <div class="col">
-                <a href="/home" class="nav-link px-2 fs-5 link-dark">Home</a>
+                <a href="/home" class="nav-link px-2 fs-5 link-dark fw-bolder">Home</a>
             </div>
             <div class="col">
                 <a href="/cart" class="nav-link px-2 fs-5 link-dark">Cart</a>
@@ -24,18 +24,31 @@
             <div class="col">
                 <a href="/profile" class="nav-link px-2 fs-5 link-dark">Profile</a>
             </div>
+            {{-- @if (auth()->user()->role == "admin") --}}
+            <div class="col">
+                <a href="/maintenance" class="nav-link px-2 fs-5 link-dark">Account Maintenance</a>
+            </div>
+            {{-- @endif --}}
         </div>
     </div>
 </div>
 
-{{-- <div class="container">
+<div class="container">
     <div class="row">
+        @foreach ($item as $i)
         <div class="col-3 d-flex justify-content-center mb-3 mt-2">
             <div class="card">
-                <img src="" alt="">
-                <a href="/home" class="btn btn-primary mt-auto">More Detail</a>
+                <img src="{{ Storage::url($i->image) }}" alt="" class="card-img-top mt-3 ms-3 me-3" style="height:12rem; width:12rem;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ $i->name }}</h5>
+                    <a href="/home/{{ $i->id }}" class="btn btn-warning mt-auto">Detail</a>
+                </div>
             </div>
         </div>
+        @endforeach
     </div>
-</div> --}}
+    <div class="d-flex justify-content-end">
+        {{ $item->links() }}
+    </div>
+</div>
 @endsection

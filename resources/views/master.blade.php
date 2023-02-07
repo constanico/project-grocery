@@ -11,4 +11,9 @@
 <body>
     @yield('content')
 </body>
+<div class="container align-items-end d-block position-relative">
+    <footer class="d-flex align-items-end py-3 my-4 border-top">
+        <p class="col-md mb-0 text-muted">&copy; 2023 Amazing E-Grocery | 2440049033 - Bernico Constantino</p>
+    </footer>
+</div>
 </html>

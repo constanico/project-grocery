@@ -27,7 +27,8 @@
 </section>
 
 <div class="container w-100 d-flex justify-content-center">
-    <form action="/" method="POST">
+    <form action="/postregister" method="POST">
+        @csrf
         <div class="d-flex flex-row">
             <div class="left me-3">
                 <div class="mb-3">
