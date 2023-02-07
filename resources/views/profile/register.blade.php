@@ -33,50 +33,83 @@
             <div class="left me-3">
                 <div class="mb-3">
                     <label for="firstname" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname">
+                    <input type="text" class="form-control @error('firstname') is-invalid @enderror" id="firstname" name="firstname" value="{{ old('firstname') }}">
+                    @error('firstname')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-4 pb-1">
                     <label for="gender" class="form-label me-2">Gender</label>
                     <div class="d-flex flex-row">
-                        <div class="form-check me-3">
-                            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Male
-                            <label class="form-check-label" for="radio1"></label>
-                          </div>
-                          <div class="form-check">
-                            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Female
-                            <label class="form-check-label" for="radio2"></label>
-                          </div>
+                        <input type="radio" class="form-check-input me-2 @error('gender') is-invalid @enderror" id="radio1" name="gender" value="male">
+                        <label class="form-check-label me-3" for="male">Male</label>
+                        <input type="radio" class="form-check-input me-2 @error('gender') is-invalid @enderror" id="radio2" name="gender" value="female">
+                        <label class="form-check-label" for="female">Female</label>
                     </div>
+                    @error('gender')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
             <div class="right">
                 <div class="mb-3">
                     <label for="lastname" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname">
+                    <input type="text" class="form-control @error('lastname') is-invalid @enderror" id="lastname" name="lastname" value="{{ old('lastname') }}">
+                    @error('lastname')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="role" class="form-label">Role</label>
-                    <select class="form-select">
-                        <option value="user">User</option>
+                    <select class="form-select @error('role') is-invalid @enderror" name="role" id="role">
+                        <option value="">Select Role</option>
                         <option value="admin">Admin</option>
+                        <option value="user">User</option>
                     </select>
+                    @error('role')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="picture" class="form-label me-2">Display Picture</label>
-                    <input type="file" class="form-control" id="picture">
+                    <input type="file" class="form-control @error('picture') is-invalid @enderror" id="picture" name="picture">
+                    @error('picture')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="confirmpassword" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmpassword" name="confirmpassword">
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
                 </div>
+
             </div>
         </div>
         <div class="d-block text-center">

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
 {
@@ -13,15 +15,14 @@ class ProfileController extends Controller
     }
 
     public function postregister(Request $request){
-        $data = $request->validate([
-            'firstname' => 'required|max:25',
-            'lastname' => 'required|max:25',
+        $request->validate([
+            'firstname' => 'required|alpha|max:25',
+            'lastname' => 'required|alpha|max:25',
             'email' => 'required|email:dns',
             'role' => 'required',
             'gender' => 'required',
             'picture' => 'required',
-            'password' => 'required|min:8',
-            'confirmpassword' => 'required|min:8'
+            'password' => ['required', 'confirmed', Password::min(8)->numbers()],
         ]);
 
         $file = $request->file('picture');
@@ -29,7 +30,17 @@ class ProfileController extends Controller
         Storage::putFileAs('public/images', $file, $imageName);
         $imageName = 'images/'.$imageName;
 
-        $data['password'] = bcrypt($data['password']);
+        DB::table('users')->insert([
+            [
+                'firstname' => $request->firstname,
+                'lastname' => $request->lastname,
+                'email' => $request->email,
+                'role' => $request->role,
+                'gender' => $request->gender,
+                'picture' => $imageName,
+                'password' => bcrypt($request->password),
+            ]
+        ]);
 
         return redirect('/login');
     }

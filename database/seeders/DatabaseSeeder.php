@@ -20,9 +20,19 @@ class DatabaseSeeder extends Seeder
             'lastName' => '1',
             'email' => 'admin@admin.com',
             'role' => 'admin',
-            'gender' => 'laki-laki',
+            'gender' => 'male',
             'picture' => 'admin.png',
             'password' => bcrypt('adminadmin'),
+        ]);
+
+        User::create([
+            'firstName' => 'User',
+            'lastName' => '1',
+            'email' => 'user@gmail.com',
+            'role' => 'user',
+            'gender' => 'male',
+            'picture' => 'admin.png',
+            'password' => bcrypt('useruser'),
         ]);
 
         Item::create([
