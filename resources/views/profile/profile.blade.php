@@ -44,11 +44,12 @@
 <div class="container w-100 d-flex justify-content-evenly">
     <div class="left">
         <div class="card">
-            <img src="{{ Storage::url($user->picture) }}" alt="" class="card-img-top m-3" style="height:18rem; width:18rem;">
+            <img src="{{ Storage::url($user->picture) }}" alt="..." class="card-img-top m-3" style="height:18rem; width:auto;">
         </div>
     </div>
     <div class="right">
-        <form action="/save" method="POST">
+        <form action="/save" method="POST" enctype="multipart/form-data">
+            {{ method_field('PUT') }}
             @csrf
             <div class="d-flex flex-row">
                 <div class="left me-3">

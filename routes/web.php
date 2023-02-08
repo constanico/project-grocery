@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth','checkrole:admin,user']], function(){
     Route::get('/delete/{id}', [CartController::class, 'deleteCart']);
     Route::post('/checkout', [CartController::class, 'checkOut']);
     Route::get('/profile', [ProfileController::class, 'profile']);
-    Route::post('/save', [ProfileController::class, 'save']);
+    Route::put('/save', [ProfileController::class, 'save']);
 });
 
 Route::group(['middleware' => ['auth','checkrole:admin']], function(){

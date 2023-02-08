@@ -72,13 +72,36 @@ class ProfileController extends Controller
     }
 
     public function profile(){
-        $id = Auth::user()->id;
-        $user = User::where('id', '=', $id)->get();
+        $user = User::find(Auth::user()->id);
+
         return view('profile.profile', compact('user'));
     }
 
-    public function save() {
+    public function save(Request $request) {
+        $request->validate([
+            'firstname' => 'required|alpha|max:25',
+            'lastname' => 'required|alpha|max:25',
+            'email' => 'required|email:dns',
+            'role' => 'required',
+            'gender' => 'required',
+            'picture' => 'required|image',
+            'password' => ['required', 'confirmed', Password::min(8)->numbers()],
+        ]);
 
+        $file = $request->file('picture');
+        $imageName = time().'.'.$file->getClientOriginalExtension();
+        Storage::putFileAs('public/images', $file, $imageName);
+        $imageName = 'images/'.$imageName;
+
+        auth()->user()->update([
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'email' => $request->email,
+            'role' => $request->role,
+            'gender' => $request->gender,
+            'picture' => $imageName,
+            'password' => bcrypt($request->password),
+        ]);
 
         return view('profile.saved');
     }
