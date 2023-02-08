@@ -36,7 +36,7 @@
 </section>
 
 <div class="container w-100 d-flex justify-content-center">
-    <form action="/postregister" method="POST">
+    <form action="/postregister" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="d-flex flex-row">
             <div class="left me-3">
@@ -107,7 +107,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="picture" class="form-label me-2">Display Picture</label>
-                    <input type="file" class="form-control @error('picture') is-invalid @enderror" id="picture" name="picture">
+                    <input type="file" name="picture" class="form-control @error('picture') is-invalid @enderror" id="picture">
                     @error('picture')
                     <div class="invalid-feedback">
                         {{ $message }}

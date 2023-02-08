@@ -22,7 +22,7 @@ class ProfileController extends Controller
             'email' => 'required|email:dns',
             'role' => 'required',
             'gender' => 'required',
-            'picture' => 'required',
+            'picture' => 'required|image',
             'password' => ['required', 'confirmed', Password::min(8)->numbers()],
         ]);
 
@@ -72,7 +72,9 @@ class ProfileController extends Controller
     }
 
     public function profile(){
-        return view('profile.profile');
+        $id = Auth::user()->id;
+        $user = User::where('id', '=', $id)->get();
+        return view('profile.profile', compact('user'));
     }
 
     public function save() {

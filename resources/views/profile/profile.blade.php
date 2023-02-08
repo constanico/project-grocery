@@ -44,7 +44,7 @@
 <div class="container w-100 d-flex justify-content-evenly">
     <div class="left">
         <div class="card">
-            <img src="..." alt="" class="card-img-top m-3" style="height:18rem; width:18rem;">
+            <img src="{{ Storage::url($user->picture) }}" alt="" class="card-img-top m-3" style="height:18rem; width:18rem;">
         </div>
     </div>
     <div class="right">
@@ -119,7 +119,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="picture" class="form-label me-2">Display Picture</label>
-                        <input type="file" class="form-control @error('picture') is-invalid @enderror" id="picture" name="picture">
+                        <input type="file" name="picture"class="form-control @error('picture') is-invalid @enderror" id="picture">
                         @error('picture')
                         <div class="invalid-feedback">
                             {{ $message }}
