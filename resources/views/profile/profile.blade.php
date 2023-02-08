@@ -105,18 +105,11 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="mb-3">
-                        <label for="role" class="form-label">Role</label>
-                        <select class="form-select @error('role') is-invalid @enderror" name="role" id="role">
-                            <option value="">Select Role</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
-                        @error('role')
-                        <div class="invalid-feedback">
-                            {{ $message }}
+                    <div class="">
+                        <div>
+                            <label for="role" class="form-label">Role</label>
                         </div>
-                        @enderror
+                        <p class="btn btn-secondary" disabled>{{ $user->role }}</p>
                     </div>
                     <div class="mb-3">
                         <label for="picture" class="form-label me-2">Display Picture</label>

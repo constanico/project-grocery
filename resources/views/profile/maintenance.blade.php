@@ -34,16 +34,27 @@
 </div>
 
 <div class="container text-center mt-5">
-    <div class="row">
+    <div class="row" style="background-color: #ffc107">
         <div class="col">
-            <p>Account</p>
+            <p class="fs-4 mt-2">Account</p>
             @foreach ($user as $u)
-                <p>{{ $u->name }}</p>
-                <p>{{ $u->role }}</p>
+                <p class="lead">{{ $u->firstName }} {{ $u->lastName }} - {{ $u->role }}</p>
             @endforeach
         </div>
         <div class="col">
-            <p>Action</p>
+            <p class="fs-4 mt-2">Action</p>
+            @foreach ($user as $u)
+            <div class="row align-items-start mb-2">
+                <div class="col">
+                    <a class="btn btn-primary" href="/update/{{ $u->id }}" role="button">Update Role</a>
+                </div>
+                <div class="col">
+                    <a href="/delete/{{ $u->id }}">
+                        <a class="btn btn-danger" href="/delete" role="button">Delete</a>
+                    </a>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 </div>

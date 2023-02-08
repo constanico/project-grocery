@@ -82,7 +82,6 @@ class ProfileController extends Controller
             'firstname' => 'required|alpha|max:25',
             'lastname' => 'required|alpha|max:25',
             'email' => 'required|email:dns',
-            'role' => 'required',
             'gender' => 'required',
             'picture' => 'required|image',
             'password' => ['required', 'confirmed', Password::min(8)->numbers()],
@@ -97,7 +96,6 @@ class ProfileController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
-            'role' => $request->role,
             'gender' => $request->gender,
             'picture' => $imageName,
             'password' => bcrypt($request->password),
@@ -107,8 +105,27 @@ class ProfileController extends Controller
     }
 
     public function maintenance() {
-        return view('profile.maintenance', [
-            'user' => User::latest()
+        $user = User::all();
+
+        return view('profile.maintenance', compact('user'));
+    }
+
+    public function update($id) {
+        $user = User::where('id', $id)->first();
+
+        return view('profile.update', compact('user'));
+    }
+
+    public function postupdate(Request $request, $id) {
+        $user = User::where('id', $id)->first();
+
+        $request->validate([
+            'role' => 'required'
         ]);
+
+        $user->role = $request->role;
+        $user->save();
+
+        return redirect('/home');
     }
 }
