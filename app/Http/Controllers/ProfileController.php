@@ -58,7 +58,7 @@ class ProfileController extends Controller
 
         if(Auth::attempt($data)){
             $request->session()->regenerate();
-            return redirect()->intended('/home');
+            return redirect()->intended('/home/en');
         }
 
         return back()->with('error', 'Email atau Password salah');
@@ -126,6 +126,6 @@ class ProfileController extends Controller
         $user->role = $request->role;
         $user->save();
 
-        return redirect('/home');
+        return redirect('/home/en');
     }
 }

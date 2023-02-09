@@ -4,7 +4,7 @@
 <div class="container-fluid bg-warning">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-around py-3">
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="/home" class="nav-link px-2 link-dark fs-3 fw-bold">Amazing E-Grocery</a></li>
+            <li><a href="/home/en" class="nav-link px-2 link-dark fs-3 fw-bold">Amazing E-Grocery</a></li>
         </ul>
 
         <div class="col-md-2 text-end">
@@ -16,7 +16,7 @@
     <div class="container text-center">
         <div class="row align-items-start">
             <div class="col">
-                <a href="/home" class="nav-link px-2 fs-5 link-dark fw-bolder">Home</a>
+                <a href="/home/en" class="nav-link px-2 fs-5 link-dark fw-bolder">Home</a>
             </div>
             <div class="col">
                 <a href="/cart" class="nav-link px-2 fs-5 link-dark">Cart</a>

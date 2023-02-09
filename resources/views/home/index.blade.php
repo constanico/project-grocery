@@ -7,26 +7,26 @@
             <li><a href="/home" class="nav-link px-2 link-dark fs-3 fw-bold">Amazing E-Grocery</a></li>
         </ul>
 
-        <div class="col-md-2 text-end">
+        <div class="col-md-3 text-end">
             <a href="/logout">
-                <button type="button" class="btn btn-primary">Log Out</button>
+                <button type="button" class="btn btn-primary">{{__('lang.logout')}}</button>
             </a>
         </div>
     </header>
     <div class="container text-center">
         <div class="row align-items-start">
             <div class="col">
-                <a href="/home" class="nav-link px-2 fs-5 link-dark fw-bolder">Home</a>
+                <a href="/home/en" class="nav-link px-2 fs-5 link-dark fw-bolder">{{__('lang.home')}}</a>
             </div>
             <div class="col">
-                <a href="/cart" class="nav-link px-2 fs-5 link-dark">Cart</a>
+                <a href="/cart" class="nav-link px-2 fs-5 link-dark">{{__('lang.cart')}}</a>
             </div>
             <div class="col">
-                <a href="/profile" class="nav-link px-2 fs-5 link-dark">Profile</a>
+                <a href="/profile" class="nav-link px-2 fs-5 link-dark">{{__('lang.profile')}}</a>
             </div>
             @if (auth()->user()->role == "admin")
             <div class="col">
-                <a href="/maintenance" class="nav-link px-2 fs-5 link-dark">Account Maintenance</a>
+                <a href="/maintenance" class="nav-link px-2 fs-5 link-dark">{{__('lang.maintenance')}}</a>
             </div>
             @endif
         </div>
@@ -41,7 +41,7 @@
                 <img src="{{ Storage::url($i->image) }}" alt="" class="card-img-top mt-3 ms-3 me-3" style="height:12rem; width:12rem;">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ $i->name }}</h5>
-                    <a href="/home/{{ $i->id }}" class="btn btn-warning mt-auto">Detail</a>
+                    <a href="/home/{{ $i->id }}" class="btn btn-warning mt-auto">{{__('lang.detail')}}</a>
                 </div>
             </div>
         </div>

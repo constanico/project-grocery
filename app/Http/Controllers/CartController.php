@@ -30,7 +30,7 @@ class CartController extends Controller
 
         $cart->save();
 
-        return redirect('home');
+        return redirect('home/en');
     }
 
     public function deleteCart($id) {
@@ -40,7 +40,7 @@ class CartController extends Controller
             $cart = DB::table('carts')->where('id', $id)->delete();
         }
 
-        return redirect('/home');
+        return redirect('/home/en');
     }
 
     public function checkout() {

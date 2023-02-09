@@ -16,7 +16,7 @@
     <div class="container text-center">
         <div class="row align-items-start">
             <div class="col">
-                <a href="/home" class="nav-link px-2 fs-5 link-dark">Home</a>
+                <a href="/home/en" class="nav-link px-2 fs-5 link-dark">Home</a>
             </div>
             <div class="col">
                 <a href="/cart" class="nav-link px-2 fs-5 link-dark fw-bolder">Cart</a>

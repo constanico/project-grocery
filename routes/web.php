@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,8 @@ Route::post('/postlogin', [ProfileController::class, 'postlogin']);
 Route::get('/logout', [ProfileController::class, 'logout']);
 
 Route::group(['middleware' => ['auth','checkrole:admin,user']], function(){
-    Route::get('/home', [HomeController::class, 'home']);
+    Route::get('/home/en', [HomeController::class, 'homeEn']);
+    Route::get('/home/id', [HomeController::class, 'homeId']);
     Route::get('/home/{id}', [HomeController::class, 'detailproduct']);
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/addToCart/{id}', [CartController::class, 'addToCart']);
