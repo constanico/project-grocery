@@ -128,4 +128,12 @@ class ProfileController extends Controller
 
         return redirect('/home/en');
     }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect('/home/en');
+    }
 }

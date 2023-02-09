@@ -49,9 +49,7 @@
                     <a class="btn btn-primary" href="/update/{{ $u->id }}" role="button">Update Role</a>
                 </div>
                 <div class="col">
-                    <a href="/delete/{{ $u->id }}">
-                        <a class="btn btn-danger" href="/delete" role="button">Delete</a>
-                    </a>
+                    <a class="btn btn-danger" href="/delete/{{ $u->id }}" role="button">Delete</a>
                 </div>
             </div>
             @endforeach

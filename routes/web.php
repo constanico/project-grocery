@@ -43,4 +43,5 @@ Route::group(['middleware' => ['auth','checkrole:admin']], function(){
     Route::get('/maintenance', [ProfileController::class, 'maintenance']);
     Route::get('/update/{id}', [ProfileController::class, 'update']);
     Route::put('/update/{id}', [ProfileController::class, 'postupdate']);
+    Route::post('/delete/{id}', [ProfileController::class, 'destroy']);
 });

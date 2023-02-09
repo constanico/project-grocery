@@ -60,7 +60,7 @@
                     <div class="container">
                         <div class="row py-2">
                             <div class="col-2 p-0">
-                                <a href="/home">
+                                <a href="/home/en">
                                     <button type="button" class="btn btn-md btn-danger">Back</button>
                                 </a>
                             </div>
